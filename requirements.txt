@@ -1,0 +1,8 @@
+chainlit==1.1.304
+chromadb==0.4.24
+langchain==0.2.5
+langchain_community==0.2.5
+langchain_core==0.2.9
+langchain_openai==0.1.9
+python-dotenv==1.0.1
+pymupdf==1.24.5

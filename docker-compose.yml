@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  chainlit-app:
+    image: ssd_jpbot
+    build: .
+    ports:
+      - "443:8000"
+    volumes:
+      - ./pdfDB:/app/pdfDB
