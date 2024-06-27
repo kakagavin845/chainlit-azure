@@ -18,7 +18,6 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain.prompts import (
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
-    AIMessagePromptTemplate,
     ChatPromptTemplate,
     PromptTemplate,
 )
@@ -79,19 +78,27 @@ def process_pdfs(pdf_storage_path: str):
     except ValueError:
         print("No existing vector store found.")
 
-    # Load PDFs and split into documents
-    for pdf_path in pdf_directory.glob("*.pdf"):
-        print(f"pdfs path ：{pdf_path}")
-        loader = PyMuPDFLoader(str(pdf_path))
-        documents = loader.load()
-        docs += text_splitter.split_documents(documents)
-   
-    # Convert text to embeddings and create a new vector store
-    vector_store = Chroma.from_documents(docs, embeddings, collection_name="ssd_japanese_store", client=client)
-    print("Vector stored in Chroma index successfully.")
-    print("There are", vector_store._collection.count(), "in the collection")
+    # Load PDFs in batches and process them
+    pdf_paths = list(pdf_directory.glob("*.pdf"))
+    batch_size = 4
+    for i in range(0, len(pdf_paths), batch_size):
+        batch_paths = pdf_paths[i:i + batch_size]
+        docs = []
+        for pdf_path in batch_paths:
+            print(f"Processing PDF: {pdf_path}")
+            loader = PyMuPDFLoader(str(pdf_path))
+            documents = loader.load()
+            docs += text_splitter.split_documents(documents)
+        
+        # Convert text to embeddings and store in Chroma
+        Chroma.from_documents(docs, embeddings, collection_name="ssd_japanese_store", client=client)
+        print(f"Batch {i // batch_size + 1} vectorized and stored in Chroma.")
 
-process_pdfs(pdf_storage_path)
+    print("All PDFs processed and stored in Chroma index.")
+    vector_store = client.get_collection(name="ssd_japanese_store")
+    print("There are", vector_store.count(), "documents in the collection")
+
+# process_pdfs(pdf_storage_path)
 
 welcome_message = "初めまして！私は日本語学習のお手伝いをする、あなたの日本語学習アシスタントです。日本語の質問や疑問があれば、どんなことでも気軽に聞いてくださいね。一緒に楽しく学んでいきましょう！"
 

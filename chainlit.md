@@ -1,14 +1,16 @@
-# Welcome to Chainlit! 🚀🤖
+# 日本語学習ボットへようこそ！ 🇯🇵🎓
 
-Hi there, Developer! 👋 We're excited to have you on board. Chainlit is a powerful tool designed to help you prototype, debug and share applications built on top of LLMs.
+こんにちは、日本語学習者のSSDの皆さん！ 🌸 私たちのチャットボットは、あなたの日本語学習の旅を楽しく、効果的にサポートするためにここにいます。
 
-## Useful Links 🔗
+## 使い方ガイド 📝
 
-- **Documentation:** Get started with our comprehensive [Chainlit Documentation](https://docs.chainlit.io) 📚
-- **Discord Community:** Join our friendly [Chainlit Discord](https://discord.gg/k73SQ3FyUh) to ask questions, share your projects, and connect with other developers! 💬
+1. **質問する:** 日本語に関する質問をボットに投げかけてください。文法、単語、発音など、どんな質問でもOKです！
+2. **練習する:** ボットと一緒に日本語で会話を練習しましょう。リアルタイムでフィードバックがもらえます。
+3. **学ぶ:** 新しい日本語のフレーズや表現を学び、会話に取り入れてみましょう。
 
-We can't wait to see what you create with Chainlit! Happy coding! 💻😊
+## 役立つリンク 🔗
 
-## Welcome screen
+- **学習リソース:** [日本語学習リソース](https://www.japanesepod101.com)でさらに学びを深めましょう 📚
+- **コミュニティ:** 他の学習者と繋がり、学びを共有するために、[日本語学習者のフォーラム](https://www.reddit.com/r/LearnJapanese/)に参加しましょう！ 💬
 
-To modify the welcome screen, edit the `chainlit.md` file at the root of your project. If you do not want a welcome screen, just leave this file empty.
+私たちのボットと一緒に楽しく学び、あなたの日本語スキルを次のレベルへ引き上げましょう！ がんばってください！💪😊
